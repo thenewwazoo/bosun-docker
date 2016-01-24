@@ -1,0 +1,18 @@
+tsdbrelay:
+  build: tsdbrelay
+  links:
+    - tsdb
+  ports:
+    - "4242:4242"
+
+bosun:
+  build: bosun
+  volumes:
+    - ./bosun/bosun.conf:/etc/bosun.conf:ro
+  links:
+    - tsdbrelay:tsdb
+  ports:
+    - "80:8070"
+
+tsdb:
+  image: opower/opentsdb
