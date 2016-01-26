@@ -16,8 +16,7 @@ curl -sL https://github.com/docker/compose/releases/download/1.5.2/docker-compos
 chmod 0755 /usr/local/bin/docker-compose
 cd /vagrant/
 echo "Starting containers..."
-service docker start
-docker-compose up
+service docker restart
 EOF
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
