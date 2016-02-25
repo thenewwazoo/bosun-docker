@@ -1,4 +1,4 @@
-FROM golang:1.5.3-alpine
+FROM golang:1.6-alpine
 MAINTAINER "Brandon Matthews <bmatt@optimaltour.us>"
 
 RUN adduser -S bosun
@@ -6,7 +6,6 @@ RUN adduser -S bosun
 ENV GODEBUG netdns=cgo
 RUN mkdir -p /var/cache/bosun && chown bosun /var/cache/bosun
 
-ADD bosun.conf /etc/bosun.conf
 
 ENV BOSUN_REPO https://github.com/bosun-monitor/bosun.git
 ENV BOSUN_TAG master
@@ -26,3 +25,5 @@ WORKDIR /var/cache/bosun/
 VOLUME /var/cache/bosun/
 EXPOSE 8070
 ENTRYPOINT ["/go/bin/bosun", "-c", "/etc/bosun.conf"]
+
+ADD bosun.conf /etc/bosun.conf
