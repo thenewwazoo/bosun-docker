@@ -15,4 +15,4 @@ bosun:
     - "80:8070"
 
 tsdb:
-  image: opower/opentsdb
+  build: "opentsdb_2.2"
